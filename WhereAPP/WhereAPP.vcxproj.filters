@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="external">
+      <UniqueIdentifier>{7fec9166-52b8-4943-a754-98df1a8a3692}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\glad">
+      <UniqueIdentifier>{0b14bf3f-d645-41ef-bee4-04e04b0f12dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\tiny_obj_loader">
+      <UniqueIdentifier>{d27b25d9-65f5-4960-8683-c534bf1c596c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\imgui">
+      <UniqueIdentifier>{6fe09e56-dece-4560-ac95-5ac6c71be47e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\stb">
+      <UniqueIdentifier>{22c615f2-4d26-40aa-86d0-72c044ed2ff7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\glad\src\glad.c">
+      <Filter>external\glad</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\tiny_obj_loader\tiny_obj_loader.cc">
+      <Filter>external\tiny_obj_loader</Filter>
+    </ClCompile>
+    <ClCompile Include="texture_mapping.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\imgui\imgui_widgets.cpp">
+      <Filter>external\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\imgui\imgui_tables.cpp">
+      <Filter>external\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\imgui\imgui_impl_opengl3.cpp">
+      <Filter>external\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\imgui\imgui_impl_glfw.cpp">
+      <Filter>external\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\imgui\imgui_draw.cpp">
+      <Filter>external\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\imgui\imgui.cpp">
+      <Filter>external\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\stb\stb_image.cpp">
+      <Filter>external\stb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\base\skybox.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\base\texture.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\base\shader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\base\object3d.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\base\model.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\base\camera.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\base\application.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="texture_mapping.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\base\texture.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\base\skybox.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\base\vertex.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\base\shader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\base\object3d.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\base\model.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\base\light.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\base\input.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\base\camera.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\base\application.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
