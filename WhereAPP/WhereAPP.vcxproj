@@ -152,6 +152,7 @@
   <ItemGroup>
     <ClCompile Include="..\base\application.cpp" />
     <ClCompile Include="..\base\camera.cpp" />
+    <ClCompile Include="..\base\element.cpp" />
     <ClCompile Include="..\base\model.cpp" />
     <ClCompile Include="..\base\object3d.cpp" />
     <ClCompile Include="..\base\shader.cpp" />
@@ -167,11 +168,12 @@
     <ClCompile Include="..\external\stb\stb_image.cpp" />
     <ClCompile Include="..\external\tiny_obj_loader\tiny_obj_loader.cc" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="texture_mapping.cpp" />
+    <ClCompile Include="scene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\base\application.h" />
     <ClInclude Include="..\base\camera.h" />
+    <ClInclude Include="..\base\element.h" />
     <ClInclude Include="..\base\input.h" />
     <ClInclude Include="..\base\light.h" />
     <ClInclude Include="..\base\model.h" />
@@ -180,7 +182,7 @@
     <ClInclude Include="..\base\skybox.h" />
     <ClInclude Include="..\base\texture.h" />
     <ClInclude Include="..\base\vertex.h" />
-    <ClInclude Include="texture_mapping.h" />
+    <ClInclude Include="scene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

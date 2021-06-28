@@ -39,9 +39,6 @@
     <ClCompile Include="..\external\tiny_obj_loader\tiny_obj_loader.cc">
       <Filter>external\tiny_obj_loader</Filter>
     </ClCompile>
-    <ClCompile Include="texture_mapping.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="..\external\imgui\imgui_widgets.cpp">
       <Filter>external\imgui</Filter>
     </ClCompile>
@@ -84,11 +81,14 @@
     <ClCompile Include="..\base\application.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="scene.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\base\element.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="texture_mapping.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\base\texture.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -117,6 +117,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\base\application.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="scene.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\base\element.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
