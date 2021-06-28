@@ -15,11 +15,11 @@ enum class RenderMode {
 	Simple, Blend, Checker
 };
 
-class TextureMapping : public Application {
+class Scene : public Application {
 public:
-	TextureMapping();
+	Scene();
 	
-	~TextureMapping();
+	~Scene();
 
 private:
 	std::unique_ptr<Model> _sphere;

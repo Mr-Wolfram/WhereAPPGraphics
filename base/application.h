@@ -22,7 +22,7 @@ public:
 protected:
 	/* window info */
 	GLFWwindow* _window = nullptr;
-	std::string _windowTitle;
+	std::string _windowTitle = "WhereAPP";
 	int _windowWidth = 1280;
 	int _windowHeight = 720;
 	bool _windowReized = false;

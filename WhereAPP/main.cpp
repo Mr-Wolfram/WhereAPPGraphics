@@ -1,8 +1,8 @@
-#include "texture_mapping.h"
+#include "scene.h"
 
 int main() {
 	try {
-		TextureMapping app;
+		Scene app;
 		app.run();
 	}
 	catch (std::exception& e) {

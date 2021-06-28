@@ -6,7 +6,7 @@
 #include <imgui_impl_glfw.h>
 #include <imgui_impl_opengl3.h>
 
-#include "texture_mapping.h"
+#include "scene.h"
 
 const std::string modelPath = "../data/sphere.obj";
 
@@ -24,7 +24,7 @@ const std::vector<std::string> skyboxTexturePaths = {
 	"../data/starfield/Back_Tex.jpg"
 };
 
-TextureMapping::TextureMapping() {
+Scene::Scene() {
 	_windowTitle = "Texture Mapping";
 
 	// init model
@@ -62,13 +62,13 @@ TextureMapping::TextureMapping() {
 	ImGui_ImplOpenGL3_Init();
 }
 
-TextureMapping::~TextureMapping() {
+Scene::~Scene() {
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui_ImplGlfw_Shutdown();
 	ImGui::DestroyContext();
 }
 
-void TextureMapping::initSimpleShader() {
+void Scene::initSimpleShader() {
 	const char* vertCode =
 		"#version 330 core\n"
 		"layout(location = 0) in vec3 aPosition;\n"
@@ -96,7 +96,7 @@ void TextureMapping::initSimpleShader() {
 	_simpleShader.reset(new Shader(vertCode, fragCode));
 }
 
-void TextureMapping::initBlendShader() {
+void Scene::initBlendShader() {
 	const char* vertCode =
 		"#version 330 core\n"
 		"layout(location = 0) in vec3 aPosition;\n"
@@ -169,7 +169,7 @@ void TextureMapping::initBlendShader() {
 	_blendShader.reset(new Shader(vertCode, fragCode));
 }
 
-void TextureMapping::initCheckerShader() {
+void Scene::initCheckerShader() {
 	const char* vertCode =
 		"#version 330 core\n"
 		"layout(location = 0) in vec3 aPosition;\n"
@@ -220,14 +220,14 @@ void TextureMapping::initCheckerShader() {
 	_checkerShader.reset(new Shader(vertCode, fragCode));
 }
 
-void TextureMapping::handleInput() {
+void Scene::handleInput() {
 	const float angluarVelocity = 0.1f;
 	const float angle = angluarVelocity * static_cast<float>(_deltaTime);
 	const glm::vec3 axis = glm::vec3(0.0f, 1.0f, 0.0f);
 	_sphere->rotation = glm::angleAxis(angle, axis) * _sphere->rotation;
 }
 
-void TextureMapping::renderFrame() {
+void Scene::renderFrame() {
 	// some options related to imGUI
 	static bool wireframe = false;
 	
