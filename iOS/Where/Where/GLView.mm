@@ -8,7 +8,8 @@
 #import "GLView.h"
 #import "GLUtils.h"
 #import <OpenGLES/ES3/gl.h>
-#import "hello_triangle.hpp"
+//#import "hello_triangle.hpp"
+#import "transformation.h"
 
 @interface GLView ()
 {
@@ -16,11 +17,12 @@
     EAGLContext *_context;    //OpenGL渲染上下文
     GLuint _renderBuffer;     //
     GLuint _frameBuffer;      //
+    GLuint _depthBuffer;      //深度缓存
 
     GLuint _programHandle;
     GLuint _positionSlot;
     
-    HelloTriangle app;
+    Transformation app;
 }
 
 @end
@@ -36,10 +38,11 @@
     if (self==[super initWithFrame:frame]) {
         [self setupLayer];
         [self setupContext];
+        [self setupDepthBuffer];
         [self setupRenderBuffer];
         [self setupFrameBuffer];
 //        [self setupProgram];  //配置program
-        app.setup();
+        [self setupApp];
         [self render];
     }
     
@@ -59,7 +62,6 @@
 }
 
 - (void)setupContext {
-    // 指定 OpenGLES 渲染API的版本，在这里我们使用OpenGLES 3.0，由于3.0兼容2.0并且功能更强，为何不用更好的呢
     EAGLRenderingAPI api = kEAGLRenderingAPIOpenGLES3;
     _context = [[EAGLContext alloc] initWithAPI:api];
     if (!_context) {
@@ -68,6 +70,12 @@
     
     // 设置为当前上下文
     [EAGLContext setCurrentContext:_context];
+}
+
+-(void)setupDepthBuffer{
+    glGenRenderbuffers(1, &_depthBuffer);
+    glBindRenderbuffer(GL_RENDERBUFFER, _depthBuffer);
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, self.frame.size.width, self.frame.size.height);
 }
 
 -(void)setupRenderBuffer{
@@ -82,6 +90,7 @@
     glBindFramebuffer(GL_FRAMEBUFFER, _frameBuffer);
     //将renderbuffer跟framebuffer进行绑定
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, _renderBuffer);
+    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _depthBuffer);
 }
 
 - (void)setupProgram
@@ -103,12 +112,18 @@
     _positionSlot = glGetAttribLocation(_programHandle, "vPosition");
 }
 
+-(void)setupApp {
+    NSString * nsFilepath = [[NSBundle mainBundle] pathForResource:@"bunny" ofType:@"obj"];
+    const char* filepath = [nsFilepath UTF8String];
+    app.setup(filepath);
+    app.windowsWidth = self.frame.size.width;
+    app.windowsHeight = self.frame.size.height;
+}
+
 -(void)render
 {
     // Setup viewport
     glViewport(0, 0, self.frame.size.width, self.frame.size.height);
-    
-    
     app.run();
     
     [_context presentRenderbuffer:_renderBuffer];

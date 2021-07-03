@@ -20,11 +20,11 @@ public:
     
     void run();
     
-    virtual void setup() = 0;
+    float windowsWidth, windowsHeight;
 
 protected:
     
-    glm::vec4 _clearColor = glm::vec4(0.5f, 0.0f, 0.0f, 1.0f);
+    glm::vec4 _clearColor = glm::vec4(0.0f, 0.0f, 0.0f, 1.0f);
     
     virtual void renderFrame() = 0;
     

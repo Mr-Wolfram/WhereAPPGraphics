@@ -19,7 +19,7 @@
 		1827B5222689FD810062D96F /* Down_Tex.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1827B5042689FD800062D96F /* Down_Tex.jpg */; };
 		1827B5232689FD810062D96F /* Right_Tex.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1827B5052689FD800062D96F /* Right_Tex.jpg */; };
 		1827B5242689FD810062D96F /* earthmap.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1827B5062689FD800062D96F /* earthmap.jpg */; };
-		1827B5252689FD810062D96F /* sphere.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 1827B5072689FD800062D96F /* sphere.mtl */; };
+		1827B5252689FD810062D96F /* planet.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 1827B5072689FD800062D96F /* planet.mtl */; };
 		1827B5262689FD810062D96F /* Rock-Texture-Surface.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1827B5082689FD800062D96F /* Rock-Texture-Surface.jpg */; };
 		1827B5272689FD810062D96F /* rock.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 1827B5092689FD800062D96F /* rock.mtl */; };
 		1827B5282689FD810062D96F /* bunny.mtl in Resources */ = {isa = PBXBuildFile; fileRef = 1827B50A2689FD800062D96F /* bunny.mtl */; };
@@ -43,6 +43,12 @@
 		1827B56F268AF1840062D96F /* application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1827B56D268AF1840062D96F /* application.cpp */; };
 		1827B572268B05180062D96F /* hello_triangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1827B570268B05180062D96F /* hello_triangle.cpp */; };
 		1827B576268B1AFC0062D96F /* tiny_obj_loader.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1827B53C268A085F0062D96F /* tiny_obj_loader.cc */; };
+		1827B587268C0ADB0062D96F /* bunny.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1827B585268C0ADB0062D96F /* bunny.cpp */; };
+		1827B58B268C0B840062D96F /* transformation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1827B58A268C0B840062D96F /* transformation.cpp */; };
+		189775B5268C2C810047CAAA /* bunny.obj in Resources */ = {isa = PBXBuildFile; fileRef = 189775B2268C2C810047CAAA /* bunny.obj */; };
+		189775B6268C2C810047CAAA /* planet.obj in Resources */ = {isa = PBXBuildFile; fileRef = 189775B3268C2C810047CAAA /* planet.obj */; };
+		189775B7268C2C810047CAAA /* rock.obj in Resources */ = {isa = PBXBuildFile; fileRef = 189775B4268C2C810047CAAA /* rock.obj */; };
+		189775BD268F452F0047CAAA /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 189775BB268F452F0047CAAA /* Block.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,7 +69,7 @@
 		1827B5042689FD800062D96F /* Down_Tex.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Down_Tex.jpg; sourceTree = "<group>"; };
 		1827B5052689FD800062D96F /* Right_Tex.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Right_Tex.jpg; sourceTree = "<group>"; };
 		1827B5062689FD800062D96F /* earthmap.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = earthmap.jpg; sourceTree = "<group>"; };
-		1827B5072689FD800062D96F /* sphere.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sphere.mtl; sourceTree = "<group>"; };
+		1827B5072689FD800062D96F /* planet.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = planet.mtl; sourceTree = "<group>"; };
 		1827B5082689FD800062D96F /* Rock-Texture-Surface.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Rock-Texture-Surface.jpg"; sourceTree = "<group>"; };
 		1827B5092689FD800062D96F /* rock.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rock.mtl; sourceTree = "<group>"; };
 		1827B50A2689FD800062D96F /* bunny.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bunny.mtl; sourceTree = "<group>"; };
@@ -104,6 +110,15 @@
 		1827B56E268AF1840062D96F /* application.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; path = application.hpp; sourceTree = "<group>"; };
 		1827B570268B05180062D96F /* hello_triangle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = hello_triangle.cpp; sourceTree = "<group>"; };
 		1827B571268B05180062D96F /* hello_triangle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = hello_triangle.hpp; sourceTree = "<group>"; };
+		1827B585268C0ADB0062D96F /* bunny.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = bunny.cpp; sourceTree = "<group>"; };
+		1827B586268C0ADB0062D96F /* bunny.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bunny.h; sourceTree = "<group>"; };
+		1827B589268C0B830062D96F /* transformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = transformation.h; sourceTree = "<group>"; };
+		1827B58A268C0B840062D96F /* transformation.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; path = transformation.cpp; sourceTree = "<group>"; };
+		189775B2268C2C810047CAAA /* bunny.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bunny.obj; sourceTree = "<group>"; };
+		189775B3268C2C810047CAAA /* planet.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = planet.obj; sourceTree = "<group>"; };
+		189775B4268C2C810047CAAA /* rock.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rock.obj; sourceTree = "<group>"; };
+		189775BB268F452F0047CAAA /* Block.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Block.cpp; sourceTree = "<group>"; };
+		189775BC268F452F0047CAAA /* Block.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Block.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,13 +154,12 @@
 		1827A4D52689FC9E0062D96F /* Where */ = {
 			isa = PBXGroup;
 			children = (
+				1827B588268C0AE80062D96F /* Applications */,
 				1827B540268A0E730062D96F /* Shader */,
 				1827B539268A03800062D96F /* Utils */,
 				1827B50B2689FD810062D96F /* base */,
 				1827B4FD2689FD800062D96F /* data */,
 				1827A4D62689FC9E0062D96F /* AppDelegate.h */,
-				1827B570268B05180062D96F /* hello_triangle.cpp */,
-				1827B571268B05180062D96F /* hello_triangle.hpp */,
 				1827A4D72689FC9E0062D96F /* AppDelegate.m */,
 				1827A4D92689FC9E0062D96F /* ViewController.h */,
 				1827A4DA2689FC9E0062D96F /* ViewController.mm */,
@@ -164,12 +178,15 @@
 		1827B4FD2689FD800062D96F /* data */ = {
 			isa = PBXGroup;
 			children = (
+				189775B2268C2C810047CAAA /* bunny.obj */,
+				189775B3268C2C810047CAAA /* planet.obj */,
+				189775B4268C2C810047CAAA /* rock.obj */,
 				1827B547268A102F0062D96F /* face.png */,
 				1827B545268A10290062D96F /* wall.jpg */,
 				1827B4FE2689FD800062D96F /* planet_Quom1200.png */,
 				1827B4FF2689FD800062D96F /* starfield */,
 				1827B5062689FD800062D96F /* earthmap.jpg */,
-				1827B5072689FD800062D96F /* sphere.mtl */,
+				1827B5072689FD800062D96F /* planet.mtl */,
 				1827B5082689FD800062D96F /* Rock-Texture-Surface.jpg */,
 				1827B5092689FD800062D96F /* rock.mtl */,
 				1827B50A2689FD800062D96F /* bunny.mtl */,
@@ -247,6 +264,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		1827B588268C0AE80062D96F /* Applications */ = {
+			isa = PBXGroup;
+			children = (
+				1827B585268C0ADB0062D96F /* bunny.cpp */,
+				1827B586268C0ADB0062D96F /* bunny.h */,
+				1827B58A268C0B840062D96F /* transformation.cpp */,
+				1827B589268C0B830062D96F /* transformation.h */,
+				1827B570268B05180062D96F /* hello_triangle.cpp */,
+				1827B571268B05180062D96F /* hello_triangle.hpp */,
+				189775BB268F452F0047CAAA /* Block.cpp */,
+				189775BC268F452F0047CAAA /* Block.hpp */,
+			);
+			path = Applications;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -303,6 +335,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				189775B7268C2C810047CAAA /* rock.obj in Resources */,
 				1827B5232689FD810062D96F /* Right_Tex.jpg in Resources */,
 				1827B51F2689FD810062D96F /* Up_Tex.jpg in Resources */,
 				1827B5272689FD810062D96F /* rock.mtl in Resources */,
@@ -311,6 +344,8 @@
 				1827A4DD2689FCA20062D96F /* Assets.xcassets in Resources */,
 				1827B51D2689FD810062D96F /* planet_Quom1200.png in Resources */,
 				1827B5212689FD810062D96F /* Left_Tex.jpg in Resources */,
+				189775B5268C2C810047CAAA /* bunny.obj in Resources */,
+				189775B6268C2C810047CAAA /* planet.obj in Resources */,
 				1827B5282689FD810062D96F /* bunny.mtl in Resources */,
 				1827B54E268A17950062D96F /* SimpleVertex.glsl in Resources */,
 				1827B5202689FD810062D96F /* Front_Tex.jpg in Resources */,
@@ -322,7 +357,7 @@
 				1827B546268A10290062D96F /* wall.jpg in Resources */,
 				1827B5242689FD810062D96F /* earthmap.jpg in Resources */,
 				1827B5262689FD810062D96F /* Rock-Texture-Surface.jpg in Resources */,
-				1827B5252689FD810062D96F /* sphere.mtl in Resources */,
+				1827B5252689FD810062D96F /* planet.mtl in Resources */,
 				1827B54F268A17950062D96F /* SimpleFragment.glsl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,6 +374,7 @@
 				1827B55A268A22340062D96F /* camera.cpp in Sources */,
 				1827B558268A222C0062D96F /* GLUtils.c in Sources */,
 				1827B56A268AE48A0062D96F /* GLView.mm in Sources */,
+				189775BD268F452F0047CAAA /* Block.cpp in Sources */,
 				1827B560268A224A0062D96F /* object3d.cpp in Sources */,
 				1827A4DB2689FC9E0062D96F /* ViewController.mm in Sources */,
 				1827B55C268A223B0062D96F /* shader.cpp in Sources */,
@@ -346,7 +382,9 @@
 				1827B56F268AF1840062D96F /* application.cpp in Sources */,
 				1827A4D82689FC9E0062D96F /* AppDelegate.m in Sources */,
 				1827B559268A222F0062D96F /* glad.c in Sources */,
+				1827B587268C0ADB0062D96F /* bunny.cpp in Sources */,
 				1827B55F268A22450062D96F /* model.cpp in Sources */,
+				1827B58B268C0B840062D96F /* transformation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
