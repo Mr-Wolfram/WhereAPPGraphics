@@ -104,23 +104,17 @@ SkyBox::~SkyBox() {
 void SkyBox::draw(const glm::mat4& projection, const glm::mat4& view) {
     // -----------------------------------------------
     // write your code here
+    // _shader->use();
+    // _shader->setMat4("view", view);
+    // _shader->setMat4("projection", projection);
 
-    glDepthMask(GL_FALSE);
-    // 1. use the shader
-    _shader->use();
-    // 2. transfer mvp matrices to gpu 
-    _shader->setMat4("projection", projection);
-    _shader->setMat4("view", view);
-    _shader->setInt("cubemap", 2);
-    // 3. transfer material attributes to gpu
-    glActiveTexture(GL_TEXTURE2);
-    
+    // glBindVertexArray(_vao);
+    // glActiveTexture(GL_TEXTURE0);
+    // _texture->bind();
+    // glDrawArrays(GL_TRIANGLES, 0, 36);
+    // glBindVertexArray(0);
+    // 
     // -----------------------------------------------
-    glBindVertexArray(_vao);
-    _texture->bind();
-    glDrawArrays(GL_TRIANGLES, 0, 36);
-    glBindVertexArray(0);
-    glDepthMask(GL_TRUE);
 }
 
 void SkyBox::cleanup() {

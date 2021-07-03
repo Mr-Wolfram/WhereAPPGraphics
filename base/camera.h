@@ -7,6 +7,8 @@ public:
 	glm::mat4 getViewMatrix() const;
 
 	virtual glm::mat4 getProjectionMatrix() const = 0;
+
+	glm::vec3 getPosition() const;
 };
 
 

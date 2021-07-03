@@ -26,6 +26,8 @@ public:
 
 	void draw() const;
 
+
+
 private:
 	// vertices of the table represented in model's own coordinate
 	std::vector<Vertex> _vertices;

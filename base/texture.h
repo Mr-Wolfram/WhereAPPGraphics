@@ -17,8 +17,6 @@ public:
 
 	virtual void unbind() const = 0;
 
-	GLuint loadCubemap(const std::vector<std::string>& filenames);
-
 protected:
 	GLuint _handle = {};
 

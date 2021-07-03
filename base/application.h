@@ -22,7 +22,7 @@ public:
 protected:
 	/* window info */
 	GLFWwindow* _window = nullptr;
-	std::string _windowTitle = "WhereAPP";
+	std::string _windowTitle;
 	int _windowWidth = 1280;
 	int _windowHeight = 720;
 	bool _windowReized = false;
@@ -36,7 +36,7 @@ protected:
 	MouseInput _mouseInput;
 
 	/* clear color */
-	glm::vec4 _clearColor = glm::vec4(0.0f, 0.0f, 0.0f, 1.0f);
+	glm::vec4 _clearColor = glm::vec4(0.52, 0.44, 1.0, 1.0f);
 
 	void updateTime();
 

@@ -29,14 +29,19 @@ Application::Application() {
 		throw std::runtime_error("initialize glad failure");
 	}
 
+
 	glViewport(0, 0, _windowWidth, _windowHeight);
 
-	//set call back function 
 	glfwSetFramebufferSizeCallback(_window, framebufferResizeCallback);
 	glfwSetKeyCallback(_window, keyboardCallback);
 	glfwSetMouseButtonCallback(_window, mouseClickedCallback);
 	glfwSetCursorPosCallback(_window, cursorMovedCallback);
 	glfwSetScrollCallback(_window, scrollCallback);
+
+	// 针对retina屏优化
+	int width,height;
+	glfwGetFramebufferSize(_window, &width, &height);
+	glViewport(0, 0, width, height);
 
 	_lastTimeStamp = std::chrono::high_resolution_clock::now();
 }
