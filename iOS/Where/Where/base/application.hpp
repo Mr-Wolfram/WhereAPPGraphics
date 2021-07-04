@@ -20,8 +20,9 @@ public:
     
     void run();
     
-    float windowsWidth, windowsHeight;
-
+    float windowWidth, windowHeight;
+    
+    float deltaTime = 0.05;
 protected:
     
     glm::vec4 _clearColor = glm::vec4(0.0f, 0.0f, 0.0f, 1.0f);

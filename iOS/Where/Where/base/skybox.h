@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-#include <glad/glad.h>
+#include <OpenGLES/ES3/gl.h>
 
 #include <glm/glm.hpp>
 
@@ -13,7 +13,7 @@
 
 class SkyBox {
 public:
-	SkyBox(const std::vector<std::string>& textureFilenames);
+	SkyBox(GLuint skyboxTextureBoxID1, GLuint skyboxTextureBoxID2, GLuint skyboxTextureBoxID3, GLuint skyboxTextureBoxID4, GLuint skyboxTextureBoxID5, GLuint skyboxTextureBoxID6);
 
 	~SkyBox();
 

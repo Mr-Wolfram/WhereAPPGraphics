@@ -7,9 +7,11 @@
 
 #import "GLView.h"
 #import "GLUtils.h"
+#import "TextureManager.h"
 #import <OpenGLES/ES3/gl.h>
 //#import "hello_triangle.hpp"
-#import "transformation.h"
+//#import "transformation.h"
+#import "entity.h"
 
 @interface GLView ()
 {
@@ -22,7 +24,28 @@
     GLuint _programHandle;
     GLuint _positionSlot;
     
-    Transformation app;
+    GLuint _blendTextureID1;
+    GLuint _blendTextureID2;
+    GLuint _blendTextureID3;
+    GLuint _blendTextureID4;
+    GLuint _blendTextureID5;
+    GLuint _blendTextureID6;
+    
+    GLuint _skyboxTextureBoxID1;
+    GLuint _skyboxTextureBoxID2;
+    GLuint _skyboxTextureBoxID3;
+    GLuint _skyboxTextureBoxID4;
+    GLuint _skyboxTextureBoxID5;
+    GLuint _skyboxTextureBoxID6;
+    
+    //手势
+    UIPanGestureRecognizer *_panGesture;      //平移
+    UIPinchGestureRecognizer *_pinchGesture;  //缩放
+    UIRotationGestureRecognizer *_rotationGesture; //旋转
+    
+    NSTimer* myTimer;
+    
+    Entity* app;
 }
 
 @end
@@ -36,14 +59,25 @@
 
 -(instancetype)initWithFrame:(CGRect)frame{
     if (self==[super initWithFrame:frame]) {
+        
+        //实例化手势
+        _panGesture = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(viewTranslate:)];
+        [self addGestureRecognizer:_panGesture];
+
+        _pinchGesture = [[UIPinchGestureRecognizer alloc]initWithTarget:self action:@selector(viewZoom:)];
+        [self addGestureRecognizer:_pinchGesture];
+
+        _rotationGesture = [[UIRotationGestureRecognizer alloc]initWithTarget:self action:@selector(viewRotation:)];
+        [self addGestureRecognizer:_rotationGesture];
+        
         [self setupLayer];
         [self setupContext];
+        
         [self setupDepthBuffer];
         [self setupRenderBuffer];
         [self setupFrameBuffer];
-//        [self setupProgram];  //配置program
         [self setupApp];
-        [self render];
+        [self setupTimer];
     }
     
     return self;
@@ -73,12 +107,15 @@
 }
 
 -(void)setupDepthBuffer{
+    _depthBuffer = 3;
+//    NSLog(@"addr：%@",&_depthBuffer);
     glGenRenderbuffers(1, &_depthBuffer);
     glBindRenderbuffer(GL_RENDERBUFFER, _depthBuffer);
     glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, self.frame.size.width, self.frame.size.height);
 }
 
 -(void)setupRenderBuffer{
+    
     glGenRenderbuffers(1, &_renderBuffer); //生成和绑定render buffer的API函数
     glBindRenderbuffer(GL_RENDERBUFFER, _renderBuffer);
     //为其分配空间
@@ -113,20 +150,79 @@
 }
 
 -(void)setupApp {
-    NSString * nsFilepath = [[NSBundle mainBundle] pathForResource:@"bunny" ofType:@"obj"];
+    
+    app = new Entity();
+    
+    NSString * nsFilepath = [[NSBundle mainBundle] pathForResource:@"sphere" ofType:@"obj"];
     const char* filepath = [nsFilepath UTF8String];
-    app.setup(filepath);
-    app.windowsWidth = self.frame.size.width;
-    app.windowsHeight = self.frame.size.height;
+    
+    _blendTextureID1 = [TextureManager getTextureImage:[UIImage imageNamed:@"eye.png"]];
+    _blendTextureID2 = [TextureManager getTextureImage:[UIImage imageNamed:@"bodyMap.png"]];
+    _blendTextureID3 = [TextureManager getTextureImage:[UIImage imageNamed:@"bodyMap.png"]];
+    _blendTextureID4 = [TextureManager getTextureImage:[UIImage imageNamed:@"bodyMap.png"]];
+    _blendTextureID5 = [TextureManager getTextureImage:[UIImage imageNamed:@"planetMap.png"]];
+    _blendTextureID6 = [TextureManager getTextureImage:[UIImage imageNamed:@"planetMap.png"]];
+    
+    app->_skyboxTextureBoxID1 = [TextureManager getTextureImage:[UIImage imageNamed:@"right.jpg"]];
+    app->_skyboxTextureBoxID2 = [TextureManager getTextureImage:[UIImage imageNamed:@"left.jpg"]];
+    app->_skyboxTextureBoxID3 = [TextureManager getTextureImage:[UIImage imageNamed:@"top.jpg"]];
+    app->_skyboxTextureBoxID4 = [TextureManager getTextureImage:[UIImage imageNamed:@"bottom.jpg"]];
+    app->_skyboxTextureBoxID5 = [TextureManager getTextureImage:[UIImage imageNamed:@"front.jpg"]];
+    app->_skyboxTextureBoxID6 = [TextureManager getTextureImage:[UIImage imageNamed:@"back.jpg"]];
+    
+    app->windowWidth = self.frame.size.width;
+    app->windowHeight = self.frame.size.height;
+    app->setup();
+    app->setModel(filepath, _blendTextureID1, _blendTextureID2, _blendTextureID3, _blendTextureID4, _blendTextureID5, _blendTextureID6);
+}
+
+-(void)setupTimer
+{
+    myTimer = [NSTimer scheduledTimerWithTimeInterval:app->deltaTime target:self selector:@selector(onRes:) userInfo:nil repeats:YES];
+}
+
+
+-(void)viewTranslate:(UIPanGestureRecognizer *)panGesture{
+    NSLog(@"translate");
+    CGPoint transPoint = [panGesture translationInView:self];
+    float x = transPoint.x / self.frame.size.width;
+    float y = transPoint.y / self.frame.size.height;
+    app->move(glm::vec3(-x, y, 0.0f));
+    
+    [panGesture setTranslation:CGPointMake(0, 0) inView:self];
+}
+
+-(void)viewRotation:(UIRotationGestureRecognizer *)rotationGesture{
+//    float rotate = rotationGesture.rotation;
+//    RX += rotate/2.0;
+//    RY += rotate/3.0;
+//    RZ += rotate;
+//
+//    rotationGesture.rotation = 0;
+}
+
+-(void)viewZoom:(UIPinchGestureRecognizer *)pinchGesture{
+    NSLog(@"zoom");
+    float scale = pinchGesture.scale;
+    
+    app->doScale(scale - 1);
+
+    pinchGesture.scale = 1.0;
+}
+
+- (void)onRes:(id)sender {
+    [self render];
 }
 
 -(void)render
 {
     // Setup viewport
     glViewport(0, 0, self.frame.size.width, self.frame.size.height);
-    app.run();
+    app->run();
     
     [_context presentRenderbuffer:_renderBuffer];
 }
+
+
 
 @end

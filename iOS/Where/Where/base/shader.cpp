@@ -4,6 +4,10 @@
 Shader::Shader() {
     
 }
+
+Shader::Shader(const char* vsCode, const char* fsCode) {
+    this->load(vsCode, fsCode);
+}
 /*
  * @brief constructor, take string as shader code to create opengl shader
  */

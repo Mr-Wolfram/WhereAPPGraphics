@@ -89,7 +89,7 @@ void Transformation::renderFrame() {
 	// @field of view
 	const float fovy = glm::radians(60.0f);
 	// @aspect of the window
-    const float aspect = windowsWidth / windowsHeight;
+    const float aspect = windowWidth / windowHeight;
 	// @near plane for clipping
 	const float znear = 0.1f;
 	// @far plane for clipping

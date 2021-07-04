@@ -4,20 +4,18 @@
 #include <sstream>
 #include <vector>
 
-#include <glad/glad.h>
+#include <OpenGLES/ES3/gl.h>
 #include <stb_image.h>
 
 class Texture {
 public:
-	Texture();
+	Texture(GLuint handle);
 
 	virtual ~Texture();
 
 	virtual void bind() const = 0;
 
 	virtual void unbind() const = 0;
-
-	GLuint loadCubemap(const std::vector<std::string>& filenames);
 
 protected:
 	GLuint _handle = {};
@@ -27,8 +25,8 @@ protected:
 
 class Texture2D : public Texture {
 public:
-	Texture2D(const std::string path);
-
+    Texture2D(GLuint handle);
+    
 	~Texture2D() = default;
 
 	void bind() const override;
@@ -36,13 +34,12 @@ public:
 	virtual void unbind() const;
 
 private:
-	std::string _path;
 };
 
 class TextureCubemap : public Texture {
 public:
-	TextureCubemap(const std::vector<std::string>& filenames);
-
+    TextureCubemap(GLuint handle);
+    
 	~TextureCubemap() = default;
 
 	void bind() const override;
@@ -50,5 +47,4 @@ public:
 	void unbind() const override;
 
 private:
-	std::vector<std::string> _paths;
 };

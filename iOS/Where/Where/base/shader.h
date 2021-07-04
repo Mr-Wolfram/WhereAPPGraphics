@@ -12,6 +12,8 @@
 class Shader {
 public:
     Shader();
+    
+    Shader(const char* vsCode, const char* fsCode);
     /*
      * @brief constructor, take string as shader code to create opengl shader
      */

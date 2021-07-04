@@ -3,8 +3,7 @@
 #include <string>
 #include <vector>
 
-#include <glad/glad.h>
-
+#include <OpenGLES/ES3/gl.h>
 #include "vertex.h"
 #include "object3d.h"
 

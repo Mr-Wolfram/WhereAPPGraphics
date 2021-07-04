@@ -1,6 +1,6 @@
 #include "skybox.h"
 
-SkyBox::SkyBox(const std::vector<std::string>& textureFilenames) {
+SkyBox::SkyBox(GLuint skyboxTextureBoxID1, GLuint skyboxTextureBoxID2, GLuint skyboxTextureBoxID3, GLuint skyboxTextureBoxID4, GLuint skyboxTextureBoxID5, GLuint skyboxTextureBoxID6) {
 	GLfloat vertices[] = {
         -1.0f,  1.0f, -1.0f,
         -1.0f, -1.0f, -1.0f,
@@ -60,7 +60,7 @@ SkyBox::SkyBox(const std::vector<std::string>& textureFilenames) {
 
     try {
         // init texture
-        _texture.reset(new TextureCubemap(textureFilenames));
+        _texture.reset(new TextureCubemap(textureID));
 
         const char* vertCode =
             "#version 330 core\n"
