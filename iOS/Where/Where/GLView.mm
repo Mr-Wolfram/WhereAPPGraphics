@@ -57,10 +57,7 @@
     return [CAEAGLLayer class];
 }
 
--(instancetype)initWithFrame:(CGRect)frame{
-    if (self==[super initWithFrame:frame]) {
-        
-        //实例化手势
+- (void)layoutSubviews {
         _panGesture = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(viewTranslate:)];
         [self addGestureRecognizer:_panGesture];
 
@@ -78,9 +75,6 @@
         [self setupFrameBuffer];
         [self setupApp];
         [self setupTimer];
-    }
-    
-    return self;
 }
 
 - (void)setupLayer
@@ -209,6 +203,15 @@
 
     pinchGesture.scale = 1.0;
 }
+- (IBAction)takeSnapshot:(id)sender {
+    NSLog(@"Snapshot");
+    UIImage *shareImg = [self takePicture];
+
+    UIImageWriteToSavedPhotosAlbum(shareImg,self, @selector(resultImage:didFinishSavingWithError:contextInfo:), NULL);
+}
+
+
+
 
 - (void)onRes:(id)sender {
     [self render];
@@ -222,6 +225,55 @@
     
     [_context presentRenderbuffer:_renderBuffer];
 }
+
+- (UIImage*) takePicture {
+    int s = 1;
+    UIScreen* screen = [UIScreen mainScreen];
+    if ([screen respondsToSelector:@selector(scale)]) {
+        s = (int) [screen scale];
+    }
+
+    GLint viewport[4];
+    glGetIntegerv(GL_VIEWPORT, viewport);
+
+
+    int width = viewport[2];
+    int height = viewport[3];
+
+    int myDataLength = width * height * 4;
+    GLubyte *buffer = (GLubyte *) malloc(myDataLength);
+    GLubyte *buffer2 = (GLubyte *) malloc(myDataLength);
+    glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
+    for(int y1 = 0; y1 < height; y1++) {
+        for(int x1 = 0; x1 <width * 4; x1++) {
+            buffer2[(height - 1 - y1) * width * 4 + x1] = buffer[y1 * 4 * width + x1];
+        }
+    }
+    free(buffer);
+
+    CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, buffer2, myDataLength, NULL);
+    int bitsPerComponent = 8;
+    int bitsPerPixel = 32;
+    int bytesPerRow = 4 * width;
+    CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceRGB();
+    CGBitmapInfo bitmapInfo = kCGBitmapByteOrderDefault;
+    CGColorRenderingIntent renderingIntent = kCGRenderingIntentDefault;
+    CGImageRef imageRef = CGImageCreate(width, height, bitsPerComponent, bitsPerPixel, bytesPerRow, colorSpaceRef, bitmapInfo, provider, NULL, NO, renderingIntent);
+    CGColorSpaceRelease(colorSpaceRef);
+    CGDataProviderRelease(provider);
+    UIImage *image = [ UIImage imageWithCGImage:imageRef scale:s orientation:UIImageOrientationUp ];
+    return image;
+}
+
+- (void)resultImage:(UIImage *)image didFinishSavingWithError:(NSError *)error
+  contextInfo:(void *)contextInfo {
+    NSLog(@"Snapshot Done");
+//    [SVProgressHUD showSuccessWithStatus:@"保存图片到相册成功"];
+
+}
+
+
+
 
 
 

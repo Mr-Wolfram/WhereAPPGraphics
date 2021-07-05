@@ -9,16 +9,14 @@
 #import "GLView.h"
 
 @interface ViewController ()
-
+@property (nonatomic , strong) GLView* openGLView;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    GLView *openGLView = [[GLView alloc]initWithFrame:self.view.bounds];
-    [self.view addSubview:openGLView];
+    self.openGLView = (GLView *)self.view;
 
 }
 

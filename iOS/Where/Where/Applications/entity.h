@@ -39,7 +39,7 @@ private:
 
 	float _speed = 1.0;
 
-	int _amount1 = 16;
+	int _amount1 = 30;
 
 	glm::vec3 _position = glm::vec3(0.0f, 0.0f, 0.0f);
 
