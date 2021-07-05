@@ -8,15 +8,13 @@
 #include "vertex.h"
 #include "object3d.h"
 
-class Model : public Object3D {
+class Element : public Object3D {
 public:
-	Model(const std::string& filepath);
+	Element(const std::vector<Vertex>& vertices, const std::vector<uint32_t>& indices);
 
-	Model(const std::vector<Vertex>& vertices, const std::vector<uint32_t>& indices);
+	~Element();
 
-	~Model();
-
-	Model(Model&& model) noexcept = default;
+	Element(Element&& element) noexcept = default;
 
 	GLuint getVertexArrayObject() const;
 
@@ -27,7 +25,7 @@ public:
 	void draw() const;
 
 private:
-	// vertices of the table represented in model's own coordinate
+	// vertices of the table represented in element's own coordinate
 	std::vector<Vertex> _vertices;
 	std::vector<uint32_t> _indices;
 
@@ -35,6 +33,6 @@ private:
 	GLuint _vao = 0;
 	GLuint _vbo = 0;
 	GLuint _ebo = 0;
-
+	
 	void initGLResources();
 }; 

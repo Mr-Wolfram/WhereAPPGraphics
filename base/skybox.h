@@ -17,7 +17,7 @@ public:
 
 	~SkyBox();
 
-	void draw(const glm::mat4& projection, const glm::mat4& view);
+	void draw(const glm::mat4& projection, const glm::mat4& view,const glm::mat4& model);
 
 private:
 	GLuint _vao = 0;

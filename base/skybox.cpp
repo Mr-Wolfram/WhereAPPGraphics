@@ -45,6 +45,10 @@ SkyBox::SkyBox(const std::vector<std::string>& textureFilenames) {
          1.0f, -1.0f,  1.0f
 	};
 
+    for (int i=0;i< 108;i++){
+        vertices[i]*=1000.0;
+    }
+
     // create vao and vbo
     glGenVertexArrays(1, &_vao);
     glGenBuffers(1, &_vbo);
@@ -68,6 +72,7 @@ SkyBox::SkyBox(const std::vector<std::string>& textureFilenames) {
             "out vec3 texCoord;\n"
             "uniform mat4 projection;\n"
             "uniform mat4 view;\n"
+            "uniform mat4 model;\n"
             "void main() {\n"
             "   texCoord = aPosition;\n"
             "   gl_Position = (projection * view * vec4(aPosition, 1.0f)).xyww;\n"
@@ -101,21 +106,25 @@ SkyBox::~SkyBox() {
     cleanup();
 }
 
-void SkyBox::draw(const glm::mat4& projection, const glm::mat4& view) {
-    // -----------------------------------------------
-    // write your code here
-    // _shader->use();
-    // _shader->setMat4("view", view);
-    // _shader->setMat4("projection", projection);
+void SkyBox::draw(const glm::mat4& projection, const glm::mat4& view, const glm::mat4& model) {
+    glDepthFunc(GL_LEQUAL);
+    _shader->use();
+    // _shader->setInt("cubemap",0);
+    
+    _shader->setMat4("view", view);
+    _shader->setMat4("projection", projection);
+    _shader->setMat4("model", model);
 
-    // glBindVertexArray(_vao);
-    // glActiveTexture(GL_TEXTURE0);
-    // _texture->bind();
-    // glDrawArrays(GL_TRIANGLES, 0, 36);
-    // glBindVertexArray(0);
-    // 
-    // -----------------------------------------------
+    
+    glBindVertexArray(_vao);
+    glActiveTexture(GL_TEXTURE0);
+    _texture->bind();
+    // glBindTexture(GL_TEXTURE_CUBE_MAP, _cubemapTexture);
+    glDrawArrays(GL_TRIANGLES, 0, 36);
+    glBindVertexArray(0);
+    glDepthFunc(GL_LESS);
 }
+
 
 void SkyBox::cleanup() {
     if (_vbo != 0) {

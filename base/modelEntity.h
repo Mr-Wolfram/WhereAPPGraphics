@@ -9,9 +9,9 @@
 #include "texture.h"
 #include "camera.h"
 
-enum class RenderMode {
-	Simple, Blend, Checker
-};
+// enum class RenderMode {
+// 	Simple, Blend, Checker
+// };
 
 class ModelEntity {
 public:
