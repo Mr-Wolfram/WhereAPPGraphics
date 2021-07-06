@@ -4,7 +4,9 @@
 #include <vector>
 
 #include "base/camera.h"
+#include "base/skybox.h"
 #include "base/modelEntity.h"
+#include "base/ElementEntity.h"
 #include "base/light.h"
 #include "base/application.h"
 
@@ -14,11 +16,12 @@ public:
 	
 	~Entity();
 
-	void setModel(const std::string& filepath,const std::string& blendTexturePaths1, const std::string& blendTexturePaths2,
-	const std::string& blendTexturePaths3, const std::string& blendTexturePaths4,
+	void setModel(const std::string& filepath,
 	const std::string& blendTexturePaths5, const std::string& blendTexturePaths6,
 	glm::vec3 position,glm::quat rotation,glm::vec3 scale,float speed,
 	int amount1);
+
+	void setElement();
 
 	void handleInput() override;
 
@@ -37,11 +40,17 @@ private:
 
 	glm::vec3 _planetPosition={0.0f, 0.0f, 0.0f};
 
+	std::vector<glm::vec3> _elementPositions;
+
 	glm::quat _rotation;
 
 	glm::quat _planetRotation={1.0f, 0.0f, 0.0f, 0.0f};
 
+	std::vector<glm::quat> _elementRotations;
+
 	glm::vec3 _scale;
+
+	std::vector<glm::vec3> _elementScales;
 
 	glm::vec3 _direction1 = { 0.0f, 0.0f, -1.0f };
 	
@@ -75,7 +84,7 @@ private:
 	
 	float _ns = 25.0f;
 	
-	float _blend = 0.8f;
+	float _blend = 0.3f;
 
 	// glm::quat _q1 = glm::angleAxis(0.0f, glm::vec3(0.0,1.0,0.0));
 	// glm::quat _q2 = glm::angleAxis(0.0f, glm::vec3(1.0,0.0,0.0));
@@ -86,11 +95,23 @@ private:
 	int activeCameraIndex = 0;
 
 	std::vector<std::shared_ptr<ModelEntity>> _models;
-	std::unique_ptr<ModelEntity> _model;
+	// std::vector<std::shared_ptr<ModelEntity>> _models2;
+	// std::vector<std::shared_ptr<ModelEntity>> _models3;
+	// std::unique_ptr<ModelEntity> _model;
 
-	std::vector<std::shared_ptr<ModelEntity>> _elements;
-	std::unique_ptr<ModelEntity> _element;
+	std::shared_ptr<ModelEntity> _body;
 
-	std::unique_ptr<ModelEntity> _planet;
+	std::vector<std::shared_ptr<Ball>> _balls;
+	std::vector<std::shared_ptr<Ellipsoid>> _ellipsoids;
+	std::vector<std::shared_ptr<Cubic>> _cubics;
+	std::vector<std::shared_ptr<Cylinder>> _cylinders;
+	std::vector<std::shared_ptr<Cone>> _cones;
+	std::vector<std::shared_ptr<Prism>> _prisms;
+
+	// std::unique_ptr<ModelEntity> _element;
+
+	std::unique_ptr<SkyBox> _skybox;
+
+	std::vector<std::unique_ptr<ModelEntity>> _planets;
 
 };

@@ -133,12 +133,12 @@ void ElementEntity::draw(const glm::mat4& projection, const glm::mat4& view, con
 	// 4.3 enable textures and transform textures to gpu
 	//----------------------------------------------------------------
 	// write your code here
-	// glActiveTexture(GL_TEXTURE0);
-	// _blendTextures[0]->bind();
-	// glActiveTexture(GL_TEXTURE1);
-	// _blendTextures[1]->bind();
-	// _blendShader->setInt("mapKd1", 0);
-	// _blendShader->setInt("mapKd2", 1);
+	glActiveTexture(GL_TEXTURE0);
+	_blendTextures[0]->bind();
+	glActiveTexture(GL_TEXTURE1);
+	_blendTextures[1]->bind();
+	_blendShader->setInt("mapKd1", 0);
+	_blendShader->setInt("mapKd2", 1);
 	_element->draw();
 }
 
@@ -333,8 +333,8 @@ Ball::Ball(float radius){
 	}
 	_element.reset(new Element(vertices, indices));
 	const std::string blendTexturePaths[2] = {
-	"../data/planet_Quom1200.png",
-	"../data/earthmap.jpg"
+	"../data/bodyMap.png",
+	"../data/bodyMap.png"
 	};
 	for (int i = 0; i < 2; ++i) {
 		_blendTextures[i].reset(new Texture2D(blendTexturePaths[i]));
@@ -390,8 +390,8 @@ Ellipsoid::Ellipsoid(float xaxis, float yaxis, float zaxis) {
 	}
 	_element.reset(new Element(vertices, indices));
 	const std::string blendTexturePaths[2] = {
-	"../data/planet_Quom1200.png",
-	"../data/earthmap.jpg"
+	"../data/bodyMap.png",
+	"../data/bodyMap.png"
 	};
 	for (int i = 0; i < 2; ++i) {
 		_blendTextures[i].reset(new Texture2D(blendTexturePaths[i]));
@@ -490,8 +490,8 @@ Cubic::Cubic(float size) {
 	_element.reset(new Element(vertices, indices));
 
 	const std::string blendTexturePaths[2] = {
-	"../data/planet_Quom1200.png",
-	"../data/earthmap.jpg"
+	"../data/bodyMap.png",
+	"../data/bodyMap.png"
 	};
 	for (int i = 0; i < 2; ++i) {
 		_blendTextures[i].reset(new Texture2D(blendTexturePaths[i]));
@@ -680,8 +680,8 @@ Cylinder::Cylinder(float radius, float height) {
 
 	_element.reset(new Element(vertices, indices));
 	const std::string blendTexturePaths[2] = {
-	"../data/planet_Quom1200.png",
-	"../data/earthmap.jpg"
+	"../data/bodyMap.png",
+	"../data/bodyMap.png"
 	};
 	for (int i = 0; i < 2; ++i) {
 		_blendTextures[i].reset(new Texture2D(blendTexturePaths[i]));
@@ -792,8 +792,8 @@ Cone::Cone(float radius, float height) {
 
 	_element.reset(new Element(vertices, indices));
 	const std::string blendTexturePaths[2] = {
-	"../data/planet_Quom1200.png",
-	"../data/earthmap.jpg"
+	"../data/bodyMap.png",
+	"../data/bodyMap.png"
 	};
 	for (int i = 0; i < 2; ++i) {
 		_blendTextures[i].reset(new Texture2D(blendTexturePaths[i]));
@@ -983,8 +983,8 @@ Prism::Prism(float radius, float height, int facenum) {
 
 	_element.reset(new Element(vertices, indices));
 	const std::string blendTexturePaths[2] = {
-	"../data/planet_Quom1200.png",
-	"../data/earthmap.jpg"
+	"../data/bodyMap.png",
+	"../data/bodyMap.png"
 	};
 	for (int i = 0; i < 2; ++i) {
 		_blendTextures[i].reset(new Texture2D(blendTexturePaths[i]));
