@@ -1,0 +1,47 @@
+{
+    "skybox" : [
+        "${leftImgPath}",
+        "${rightImgPath}",
+        "${upImgPath}",
+        "${downImgPath}",
+        "${frontImgPath}",
+        "${backImgPath}"
+    ],
+    "camera" : {
+        "position" : "${vec3}",
+        "rotation" : "${vec3}"
+    },
+    "light" : {
+        "totalNum" : "${totalNum}",
+        "lightEntity" : [
+            {
+                "type" : "direcct",
+                "position" : "${vec3}",
+                "rotation" : "${vec3}",
+                "insensity" : "${float}",
+                "color" : "${vec3}"
+            },
+            {
+                "type" : "direcct",
+                "position" : "${vec3}",
+                "rotation" : "${vec3}",
+                "insensity" : "${float}",
+                "color" : "${vec3}"
+            }
+        ]
+    },
+    "EntityNum" : "${EntityNum}",
+    "Entity" : [
+        {
+            "type" : "Model|Element",
+            "objFilePaht" : "${filePath}",
+            "position" : "${vec3}",
+            "rotation" : "${vec3}",
+            "scale" : "${float}",
+            "material" : "${struct}",
+            "texture" : "${struct}"
+        }
+    ]
+    
+
+}
