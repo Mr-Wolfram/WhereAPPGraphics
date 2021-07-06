@@ -288,6 +288,7 @@ balls[i].get()->setPosition(glm::vec3(_cameras[0]->position.x+_elementPositions[
 ```
 
 场景开始和短暂漫游后的对比：
+显而易见的，结束时小精灵体积显著增大，场景中小球数量减少。
 <img width="1392" alt="对比-开始" src="https://user-images.githubusercontent.com/71428910/124621537-f15bd280-deac-11eb-80a3-c86313179593.png">
 <img width="1392" alt="对比-结束" src="https://user-images.githubusercontent.com/71428910/124621543-f3259600-deac-11eb-806a-b30cb7cc8e9e.png">
 
