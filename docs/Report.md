@@ -211,7 +211,7 @@ classDiagram
 
 ```
 
-`json` 由
+`json` 由 https://github.com/nlohmann/json 提供的json库进行解析，在代码文件中，为了避免跨平台带来的不确定问题。提交的版本没有使用 json 解析的形式，而是将参数预先给定。方便展示。
 
 
 ### 读取 obj 序列
@@ -224,7 +224,7 @@ classDiagram
 
 ## PC 端效果演示
 
-## iOS 端效果演示
+## iOS 端效果演示git
 
 ### iOS 端设计
 
